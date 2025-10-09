@@ -734,6 +734,10 @@ namespace esphome
                     {
                         ESP_LOGW(TAG, "found %d", out[i].command.packetNumber);
                         out.erase(out.begin() + i);
+                        if (out.size() > 0) {
+                            ESP_LOGW(TAG, "Flushing OUT (size %u)", out.size());
+                            out.clear();
+                        }
                         break;
                     }
                 }
@@ -1218,3 +1222,4 @@ namespace esphome
 
     } // namespace samsung_ac
 } // namespace esphome
+
